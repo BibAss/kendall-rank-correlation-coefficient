@@ -38,13 +38,13 @@ The code computes the Kendall rank correlation coefficient (tau) using both sequ
 
 ## Parallelization Principle:
 
-The input vectors are divided into chunks based on the number of workers. Each worker processes its chunk independently and computes local counts of concordant and discordant pairs. The results are then aggregated to compute the final Kendall tau.
+The input vectors are divided into chunks based on the number of workers. Each worker processes its chunk independently and computes local counts of concordant and discordant pairs.The results are collected from each stream using a reduce operator and summed by a computer to give the final value of Kendall's tau.
 
 ---
 
-## Program Overview:
+## Visualisation program Overview:
 
-The second program runs the previously defined script with varying numbers of workers (from 1 to 10) and captures the execution time for the parallel computation. It then plots these times against the number of workers using Matplotlib.
+The graph_efficiency program runs the previously defined script with varying numbers of workers (from 1 to 10) and captures the execution time for the parallel computation. It then plots this time against the number of worker processes using Matplotlib, producing a handy png file that can be used to analyze the efficiency of dividing the work by calculating the coefficient.
 
 ---
 
@@ -58,3 +58,14 @@ The second program runs the previously defined script with varying numbers of wo
 ```bash
     python graph_script.py>
 ```
+
+---
+
+## Results
+As a result of running the program on our machine for 8 workers, an array of 2000 elements with values ​​from 2 to 50, we received the following time values:
+- Non-parallel execution time: **~5.89 seconds**  
+- Parallel execution time: **~0.23 seconds (25x speedup)**
+- ScyPy execution time **~0.0 seconds** ☠☠☠
+
+Also, you can look at the efficiency of dividing the workflow into workers to speed up the algorithm:
+![Speed up results](https://github.com/BibAss/kendall-rank-correlation-coefficient/blob/main/img/img.png?raw=true)
