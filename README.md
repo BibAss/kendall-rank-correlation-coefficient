@@ -63,8 +63,8 @@ The graph_efficiency program runs the previously defined script with varying num
 
 ## Results
 As a result of running the program on our machine for 8 workers, an array of 2000 elements with values ​​from 2 to 50, we received the following time values:
-- Non-parallel execution time: **~5.89 seconds**  
-- Parallel execution time: **~0.23 seconds (25x speedup)**
+- Non-parallel execution time: **~1.39 seconds**  
+- Parallel execution time: **~0.23 seconds (6x speedup)**
 - ScyPy execution time **~0.0 seconds** ☠☠☠
 
 Also, you can look at the efficiency of dividing the workflow into workers to speed up the algorithm:
